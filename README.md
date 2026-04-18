@@ -7,10 +7,8 @@ This project demonstrates a complete **Data Analytics workflow using SQL**, wher
 Instead of treating queries as isolated tasks, the project follows a **logical, step-by-step analytical progression**, where each query builds upon the previous one—mirroring how real-world data analysts approach problem-solving.
 
 ---
-## 🗺️ Data Analytics Roadmap
 <p align="center">
   <img src="./docs/data-analytics2.png" 
-       alt="Data Analytics Roadmap" 
        style="border-radius: 12px; width: 80%;">
 </p>
 
