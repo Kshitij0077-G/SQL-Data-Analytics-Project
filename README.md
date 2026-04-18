@@ -190,5 +190,7 @@ This project demonstrates how SQL can be used to solve real-world analytical pro
 
 It highlights the practical role of SQL in turning data into actionable decisions.
 
+---
+
 ## 🛡️ License
 This project is licensed under the MIT License. You are free to use, modify, and share this project with proper attribution.
