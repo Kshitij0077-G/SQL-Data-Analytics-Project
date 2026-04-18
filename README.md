@@ -8,6 +8,8 @@ Instead of treating queries as isolated tasks, the project follows a **logical, 
 
 ---
 
+![Data Analytics Roadmap](Docs/Data Analytics .png)
+
 ## 🔍 Step 1: Understanding the Data (Exploratory Phase)
 
 ```sql
