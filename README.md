@@ -13,29 +13,29 @@ Instead of treating queries as isolated tasks, the project follows a **logical, 
 
 ## 📂 The Analytical Workflow
 
-### 1. Data Exploration (Discovery Phase)
-Understanding the dataset's structure and boundaries before performing deeper calculations.
-* **Schema Audit:** Identified available tables, column structures, and data sources.
-* **Data Profiling:** Verified unique business segments, categories, and date ranges to establish baseline metrics.
+**1. Data Exploration (Discovery Phase):**
+  Understanding the dataset's structure and boundaries before performing deeper calculations.
+  - Environment Setup: Configured core database environments and schema layouts (Gold_Schema.sql).
+  - Structural Auditing: Executed baseline integrity verifications for database dimensions and measures (Check for dimension and measure.sql).
+  - Data Profiling: Explored data fields, date boundaries, magnitudes, and structural item positions (Database Exploration.sql, Date Exploration.sql, Dimensions Exploration.sql, Measure Exploration.sql, Magnitude Analysis.sql, Ranking Analysis.sql).
 
-### 2. Performance & Contribution Analysis
-Evaluating how different products, categories, and business units drive revenue.
-* **Product Rankings:** Applied ranking functions to isolate top and bottom-performing products.
-* **Revenue Share:** Calculated category performance and percentage contributions to total sales.
-* **Geographic Distribution:** Compared performance across regional business units.
+**2. Performance & Contribution Analysis:**
+  Evaluating how different products, categories, and business units drive revenue.
+  - Sector Performance: Evaluated core driving sales metrics across distinct business sectors (Performance Analysis.sql).
+  - Revenue Share: Calculated the part-to-whole percentage contributions of each product category to total sales (Part-to-Whole.sql).
 
-### 3. Trend & Growth Analysis
+**3. Trend & Growth Analysis:**
 Introducing the time dimension to monitor business progression and momentum over time.
-* **Time-Series Tracking:** Analyzed daily and monthly sales trends to spot seasonal patterns.
-* **Cumulative Metrics:** Applied window functions to calculate running totals and track ongoing growth.
+- Time-Series Tracking: Modeled daily and monthly sales performance to identify shifts and business trends over time (Change_over_time_Analysis.sql).
+- Cumulative Metrics: Applied rolling windows to calculate running totals and track ongoing growth progression (Cumulative_Analysis.sql).
 
-### 4. Customer Segmentation
+**4. Customer Segmentation:**
 Applying conditional business logic to organize rows into meaningful target groups.
-* **Value Brackets:** Classified customers into "High Value" or "Low Value" segments based on purchasing thresholds to support targeted business strategies.
+- Value Brackets: Used conditional logic to segment customer datasets into distinct value groups based on purchase metrics (Data_Segmentation_Analysis.sql).
 
-### 5. Consolidated Executive Reporting
+**5. Consolidated Executive Reporting:**
 Bringing the entire analytical journey together into a clean summary for decision-making.
-* **Final Summary:** Generated unified reports combining total sales metrics, order counts, and category summaries into a single view.
+- Final Summaries: Compiled multi-layer analysis scripts into production-ready reporting views built around business customers and products (Customers_Reporting.sql, Product_Reporting.sql).
 
 ---
 
@@ -62,7 +62,46 @@ By exploring this workflow, you will see how to:
 * **Environment & Tools:** Relational Database Concepts, Git, GitHub
 
 ---
-
+## 📂 Project Structure
+```
+SQL-Data-Analytics-Project/
+│
+├── datasets/                            # Cleaned transactional & dimensional datasets
+│   └── files/
+│       ├── dim_customers.csv            # Customer dimensional data
+│       ├── dim_products.csv             # Product metadata and catalog
+│       └── fact_sales.csv               # Central core sales transactions table
+│
+├── docs/                                # Media assets and documentation
+│   └── data-analytics.png               # The analytical lifecycle roadmap image
+│
+└── scripts/                             # Complete database & analytical development scripts
+    ├── Create_Schema/
+    │   └── Gold_Schema.sql              # Final schema configuration script
+    │
+    ├── Data Analysis/
+    │   ├── EDA/                         # Phase 1: Exploratory Data Analysis
+    │   │   ├── Database Exploration.sql
+    │   │   ├── Date Exploration.sql
+    │   │   ├── Dimensions Exploration.sql
+    │   │   ├── Magnitude Analysis.sql
+    │   │   ├── Measure Exploration.sql
+    │   │   └── Ranking Analysis.sql
+    │   │
+    │   ├── Advanced Analytics/          # Phases 2-5: Window functions & business logic
+    │   │   ├── Change_over_time_Analysis.sql
+    │   │   ├── Cumulative_Analysis.sql
+    │   │   ├── Data_Segmentation_Analysis.sql
+    │   │   ├── Part-to-Whole.sql        # Percentage share/contribution queries
+    │   │   └── Performance Analysis.sql
+    │   │
+    │   └── Reporting/                   # Phase 6: Final executive metrics
+    │       ├── Customers_Reporting.sql
+    │       └── Product_Reporting.sql
+    │
+    └── Dimension and Measure/
+        └── Check for dimension and measure.sql
+```
 ## 💼 Use Case
 
 This project simulates a real-world scenario where a data analyst:
@@ -90,3 +129,7 @@ It highlights the practical role of SQL in turning data into actionable decision
 
 ## 🛡️ License
 This project is licensed under the MIT License. You are free to use, modify, and share this project with proper attribution.
+
+## 🔎 About Me
+Hi, I’m **Kshitij Gudekar** — a former **Data Analyst** expanding my expertise in **Data Engineering**.
+This project connects both roles by using the clean tables from my previous data warehouse project. My goal was to complete the data lifecycle: taking those engineered datasets and using analytical SQL to build out business logic, track trends, and create final summaries.
