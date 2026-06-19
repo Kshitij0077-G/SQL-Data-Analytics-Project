@@ -9,161 +9,57 @@ Instead of treating queries as isolated tasks, the project follows a **logical, 
 ---
 ![Data Analytics Roadmap](docs/data-analytics.png)
 
-## 🔍 Step 1: Understanding the Data (Exploratory Phase)
-
-```sql
-SELECT TABLE_NAME 
-FROM INFORMATION_SCHEMA.TABLES;
-```
-
-Identifies all tables in the database, helping establish the starting point for analysis.
-
-```sql
-SELECT DISTINCT category
-FROM products;
-```
-
-Extracts unique categories to understand available segments for analysis.
-
-```sql
-SELECT 
-    YEAR(order_date) AS year,
-    MONTH(order_date) AS month
-FROM orders;
-```
-
-Introduces the time dimension for trend and seasonality analysis.
-
-```sql
-SELECT 
-    SUM(sales) AS total_sales,
-    AVG(sales) AS avg_sales
-FROM orders;
-```
-
-Provides a high-level summary of overall performance.
-
 ---
 
-## 📊 Step 2: Exploring Patterns and Comparisons
+## 📂 The Analytical Workflow
 
-```sql
-SELECT 
-    product_name,
-    RANK() OVER (ORDER BY sales DESC) AS rank
-FROM products;
-```
+### 1. Data Exploration (Discovery Phase)
+Understanding the dataset's structure and boundaries before performing deeper calculations.
+* **Schema Audit:** Identified available tables, column structures, and data sources.
+* **Data Profiling:** Verified unique business segments, categories, and date ranges to establish baseline metrics.
 
-Ranks products to identify top and bottom performers.
+### 2. Performance & Contribution Analysis
+Evaluating how different products, categories, and business units drive revenue.
+* **Product Rankings:** Applied ranking functions to isolate top and bottom-performing products.
+* **Revenue Share:** Calculated category performance and percentage contributions to total sales.
+* **Geographic Distribution:** Compared performance across regional business units.
 
-```sql
-SELECT 
-    category,
-    SUM(sales) AS total_sales
-FROM products
-GROUP BY category;
-```
+### 3. Trend & Growth Analysis
+Introducing the time dimension to monitor business progression and momentum over time.
+* **Time-Series Tracking:** Analyzed daily and monthly sales trends to spot seasonal patterns.
+* **Cumulative Metrics:** Applied window functions to calculate running totals and track ongoing growth.
 
-Compares performance across categories to identify key contributors.
+### 4. Customer Segmentation
+Applying conditional business logic to organize rows into meaningful target groups.
+* **Value Brackets:** Classified customers into "High Value" or "Low Value" segments based on purchasing thresholds to support targeted business strategies.
 
----
-
-## 📈 Step 3: Analyzing Trends and Growth
-
-```sql
-SELECT 
-    order_date,
-    SUM(sales) AS daily_sales
-FROM orders
-GROUP BY order_date
-ORDER BY order_date;
-```
-
-Tracks how sales change over time to identify trends.
-
-```sql
-SELECT 
-    order_date,
-    SUM(sales) OVER (ORDER BY order_date) AS cumulative_sales
-FROM orders;
-```
-
-Calculates cumulative growth to analyze progression over time.
-
----
-
-## 📉 Step 4: Performance & Contribution Analysis
-
-```sql
-SELECT 
-    region,
-    SUM(sales) AS total_sales
-FROM orders
-GROUP BY region;
-```
-
-Evaluates performance across regions or business units.
-
-```sql
-SELECT 
-    category,
-    SUM(sales) * 100.0 / SUM(SUM(sales)) OVER() AS percentage
-FROM products
-GROUP BY category;
-```
-
-Calculates contribution percentage of each category to total sales.
-
----
-
-## 🧩 Step 5: Segmentation & Business Logic
-
-```sql
-SELECT 
-    customer_id,
-    CASE 
-        WHEN sales > 1000 THEN 'High Value'
-        ELSE 'Low Value'
-    END AS segment
-FROM orders;
-```
-
-Segments customers into meaningful groups for targeted analysis.
-
----
-
-## 📄 Step 6: Final Reporting
-
-```sql
-SELECT 
-    category,
-    SUM(sales) AS total_sales,
-    COUNT(*) AS total_orders
-FROM orders
-GROUP BY category;
-```
-
-Generates a summary report combining key business metrics.
-
----
-
-## 🧠 Key Focus of the Project
-
-* Applying structured analytical thinking using SQL
-* Leveraging window functions and aggregations
-* Building a strong, portfolio-ready analytics workflow
+### 5. Consolidated Executive Reporting
+Bringing the entire analytical journey together into a clean summary for decision-making.
+* **Final Summary:** Generated unified reports combining total sales metrics, order counts, and category summaries into a single view.
 
 ---
 
 ## 🎯 What You Will Learn
 
-By going through this project, you will learn how to:
+By exploring this workflow, you will see how to:
+* **Audit & Profile Data:** Efficiently map out and understand an unfamiliar database structure.
+* **Write Analytical Queries:** Master window functions to calculate running totals, rankings, and percentage shares.
+* **Apply Business Logic:** Use conditional statements to segment data and answer complex business questions.
+* **Build Executive Summaries:** Translate raw business problems into clean, structured reporting metrics.
 
-* Explore and understand datasets using SQL
-* Write efficient queries for analysis
-* Apply window functions for advanced insights
-* Perform trend, performance, and segmentation analysis
-* Translate business problems into SQL solutions
+---
+
+## 🧠 Core Competencies & Skills Demonstrated
+
+* **Analytical Thinking:** Translating multi-step business problems into structured SQL solutions.
+* **Advanced Querying:** Heavy usage of Window Functions, multi-level Aggregations, and conditional `CASE` statements.
+* **Data Lifecycle Flow:** Moving cleanly from initial data exploration to final executive-level reporting layers.
+
+---
+
+## 🛠️ Technology Used
+* **Languages & Frameworks:** T-SQL / SQL Server
+* **Environment & Tools:** Relational Database Concepts, Git, GitHub
 
 ---
 
